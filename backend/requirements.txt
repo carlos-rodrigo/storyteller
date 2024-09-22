@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+langchain
+langchain-community
+pydantic
+langchain-ollama
+pydub
+TTS
+ffmpeg-python
+elevenlabs
+aiofiles

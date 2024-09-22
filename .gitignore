@@ -1,0 +1,78 @@
+# Dependencies
+frontend/node_modules
+frontend/.pnp
+frontend/.pnp.js
+
+# Testing
+frontend/coverage
+
+# Next.js
+frontend/.next/
+frontend/out/
+
+# Production
+frontend/build
+
+# Misc
+*.DS_Store
+*.pem
+
+# Debug
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
+# Local env files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Vercel
+frontend/.vercel
+
+# TypeScript
+*.tsbuildinfo
+
+# Python
+backend/__pycache__/
+backend/*.py[cod]
+backend/*$py.class
+
+# Virtual Environment
+backend/venv/
+backend/env/
+backend/ENV/
+
+# PyCharm
+backend/.idea/
+
+# VS Code
+backend/.vscode/
+
+# Jupyter Notebook
+backend/.ipynb_checkpoints
+
+# Docker
+docker-compose.override.yml
+
+# Audio files
+*.mp3
+*.wav
+*.ogg
+
+# Logs
+*.log
+
+# Database
+*.sqlite3
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
