@@ -1,4 +1,5 @@
-# AI Chat Application
+# Rufina's Storyteller Machine
+This project was created to generate a storyteller machine to listen to the story that my daughter wants before sleep.
 
 This project consists of a backend API built with FastAPI and a frontend application built with Next.js. The backend uses Ollama for AI model integration and ElevenLabs for text-to-speech functionality.
 
