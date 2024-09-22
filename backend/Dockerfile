@@ -18,3 +18,6 @@ EXPOSE 8000
 
 # Command to run the application using uvicorn
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+
+# Set environment variable (this is a default value, will be overwritten by docker run command)
+ENV ELEVENLABS_API_KEY=""
