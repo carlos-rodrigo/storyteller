@@ -1,23 +1,33 @@
-# Use an official Python runtime as the base image
-FROM python:3.9-slim
+FROM python:3.9
 
-# Set the working directory in the container
+# Set environment variables
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+
+# Install system dependencies and Rust compiler
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    curl \
+    && curl https://sh.rustup.rs -sSf | sh -s -- -y \
+    && rm -rf /var/lib/apt/lists/*
+
+# Add Rust to PATH
+ENV PATH="/root/.cargo/bin:${PATH}"
+
 WORKDIR /app
 
-# Copy the requirements file into the container
+# Install Python dependencies
 COPY requirements.txt .
+RUN pip install --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
 
-# Install the Python dependencies
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Copy the rest of the backend code into the container
+# Copy project files
 COPY . .
 
-# Expose the port that your backend app will run on
+# Create directory for audio files
+RUN mkdir -p /app/audio
+
 EXPOSE 8000
 
-# Command to run the application using uvicorn
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
-
-# Set environment variable (this is a default value, will be overwritten by docker run command)
-ENV ELEVENLABS_API_KEY=""
+# Run the application
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]

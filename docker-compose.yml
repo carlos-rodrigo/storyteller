@@ -15,10 +15,9 @@ services:
     build: ./frontend
     ports:
       - "3001:3001"
-    volumes:
-      - ./frontend:/app
-      - /app/node_modules
-    command: npm run dev -- -p 3001
+    environment:
+      - PORT=3001
+    command: [ "npm", "start" ]
 
 volumes:
   node_modules:

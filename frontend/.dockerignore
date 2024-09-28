@@ -1,0 +1,6 @@
+node_modules
+.next
+.git
+*.log
+# Ensure the following line is NOT present
+# public

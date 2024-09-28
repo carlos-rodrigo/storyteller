@@ -10,7 +10,7 @@ from elevenlabs import save
 app = FastAPI()
 
 # Initialize the Ollama model
-llm = ollama.Ollama(model="mistral-nemo")
+llm = ollama.Ollama(model="llama3.1")
 
 # Create a prompt template
 story_prompt = PromptTemplate(
@@ -18,6 +18,7 @@ story_prompt = PromptTemplate(
     template=(
         "Write a short children's story about {topic}. "
         "The story should be engaging and suitable for young children, "
+        "The story should be in Spanish. "
         "approximately 5 minutes long when read aloud, and in the language of the topic. "
         "Enclose the story within <story> </story> tags. "
         "Avoid using special characters like <, >, {{, }}, or *."
@@ -63,7 +64,7 @@ async def generate_story(request: StoryRequest):
 async def generate_audio(request: AudioRequest):
     try:
         # Get the ElevenLabs API key from environment variable
-        elevenlabs_api_key = os.environ.get('ELEVENLABS_API_KEY')
+        elevenlabs_api_key = "sk_b4df0b781f836c29510b133018b6ac710988fec67ea1f071" #os.environ.get('ELEVENLABS_API_KEY')
         if not elevenlabs_api_key:
             raise ValueError("ELEVENLABS_API_KEY environment variable is not set")
         client = ElevenLabs(api_key=elevenlabs_api_key)
@@ -136,7 +137,7 @@ app.mount("/audio", StaticFiles(directory="audio"), name="audio")
 # Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # Replace with your frontend URL
+    allow_origins=["http://localhost:3001"],  # Replace with your frontend URL
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
